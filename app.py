@@ -16,25 +16,21 @@ class User(db.Model):
     date_posted = db.Column(db.DateTime)
     content = db.Column(db.Text)
 
-
 @app.route('/')
 def index():
-    
-    return render_template('index.html')
+    posts = User.query.order_by(User.date_posted.desc()).all()
 
-@app.route('about')
-def about ():
+    return render_template('index.html', posts=posts)
+
+@app.route('/about')
+def about():
     return render_template('about.html')
 
 @app.route('/post/<int:post_id>')
 def post(post_id):
     post = User.query.filter_by(id=post_id).one()
-    date_posted = 'February 16, 2022'
-    return render_template('post.html', post=post)
 
-@app.route('contact')
-def contact():
-    return render_template('contact.html')
+    return render_template('post.html', post=post)
 
 @app.route('/add')
 def add():
@@ -46,12 +42,14 @@ def addpost():
     subtitle = request.form['subtitle']
     author = request.form['author']
     content = request.form['content']
+    return '<h1> Title: {}  Subtitle: {} Author: {} Content: {} </h1>'.format(title,subtitle,author,content)
 
-    post = User(title=title, subtitle=subtitle, author=author, content=content, date_posted=datetime.now())
+    #post = User(title=title, subtitle=subtitle, author=author, content=content, date_posted=datetime.now())
 
-    db.session.add(post)
-    db.session.commit()
-    
-    return redirect(url_for('index'))
-if __name__=='__main__':
+    #db.session.add(post)
+    #db.session.commit()
+
+    #return render_template('index')
+
+if __name__ == '__main__':
     app.run(debug=True)
