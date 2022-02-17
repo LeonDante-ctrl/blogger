@@ -16,6 +16,10 @@ class User(db.Model):
     date_posted = db.Column(db.DateTime)
     content = db.Column(db.Text)
 
+@app.before_first_request
+def create_tables():
+    db.create_all()
+
 @app.route('/')
 def index():
     posts = User.query.order_by(User.date_posted.desc()).all()
@@ -42,14 +46,14 @@ def addpost():
     subtitle = request.form['subtitle']
     author = request.form['author']
     content = request.form['content']
-    return '<h1> Title: {}  Subtitle: {} Author: {} Content: {} </h1>'.format(title,subtitle,author,content)
+    #return '<h1> Title: {}  Subtitle: {} Author: {} Content: {} </h1>'.format(title,subtitle,author,content)
 
     #post = User(title=title, subtitle=subtitle, author=author, content=content, date_posted=datetime.now())
 
     #db.session.add(post)
     #db.session.commit()
 
-    #return render_template('index')
+    return render_template('index')
 
 if __name__ == '__main__':
     app.run(debug=True)

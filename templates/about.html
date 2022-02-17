@@ -6,11 +6,16 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Dante's blog</title>
-        <link rel="icon" type="image/x-icon" href="/home/dante/Documents/dantesblog/assets/favicon.ico" />
-        <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
-        <link href="/home/dante/Documents/dantesblog/css/styles.css" rel="stylesheet" />
+        <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
+
+        <!-- Custom fonts for this template -->
+        <link href="{{ url_for('static', filename='font-awesome.min.css') }}" rel="stylesheet" type="text/css">
+        <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    
+        <!-- Custom styles for this template -->
+        <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+    
     </head>
     <body>
         <!-- Navigation-->
@@ -49,7 +54,7 @@
                         <p>Linux is only free if your time has no value.</p>
                         <p>If it handshakes , i can access it </p>
                         <p>Metasploit master</p>
-                        <p>Click <a href="http://spaceipsum.com/">Here</a> to see more</p>
+                        <p>Click <a href="http://spaceipsum.com/">Here</a> and <a href="http://spaceipsum.com/">Here</a> for a variety of randomly generated quotes</p>
                     </div>
                 </div>
             </div>
